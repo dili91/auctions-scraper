@@ -1,0 +1,16 @@
+[package]
+name = "auctions_scraper"
+description = "A rusty auctions scraper"
+version = "0.1.0"
+authors = ["Andrea Di Lisio <andrea.dilisio91@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+failure = "0.1.8"
+headless_chrome = "0.9.0"
+log = "0.4.0"
+env_logger = "0.7.1"
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
