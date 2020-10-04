@@ -1,8 +1,8 @@
 # Auctions scraper
-A simple web scraping project based on Rust 
+A simple web scraping project based on Rust
 
 ## Todos
 - split project into different modules
 - define tests
-- make it docker ready 
+- make it docker ready
 - link github actions
