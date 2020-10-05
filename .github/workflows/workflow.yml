@@ -11,9 +11,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Look for vulnerabilities
-        uses: icepuma/rust-action@master 
+        uses: actions-rs/audit-check@v1.2.0
         with:
-          args: cargo audit 
+          # GitHub Actions token
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check code format
         uses: icepuma/rust-action@master 
