@@ -24,13 +24,13 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: fmt
-          args: --check
+          args: -- --check
 
       - name: Cargo clippy
         uses: actions-rs/cargo@v1
         with:
           command: clippy
-          # args: -Dwarnings
+          # args: -- -Dwarnings
       
       - name: Cargo test
         uses: actions-rs/cargo@v1
