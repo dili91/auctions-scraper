@@ -3,7 +3,7 @@ name: Rust workflow
 on: push
 
 jobs:
-  rust-lint:
+  rust-wf:
     runs-on: ubuntu-latest
 
     steps:

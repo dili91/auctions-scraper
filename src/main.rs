@@ -26,13 +26,12 @@ fn main() {
     let auctions = browse_auctions().unwrap();
 
     for a in auctions {
-        // println!("{:?}", a);
         println!("{}", serde_json::to_string_pretty(&a).unwrap());
     }
 }
 
 fn scrape_info_by_css_class(element: &Element, class: &str) -> String {
-    return match element
+    match element
         .get_description()
         .unwrap()
         .find(|n| {
@@ -44,11 +43,11 @@ fn scrape_info_by_css_class(element: &Element, class: &str) -> String {
     {
         Some(e) => String::from(e.node_value.trim()),
         None => String::new(),
-    };
+    }
 }
 
 fn scrape_info_by_text(element: &Element, text: &str) -> String {
-    return match element
+    match element
         .get_description()
         .unwrap()
         .find(|n| {
@@ -67,7 +66,7 @@ fn scrape_info_by_text(element: &Element, text: &str) -> String {
     {
         Some(e) => String::from(e.node_value.trim()),
         None => String::new(),
-    };
+    }
 }
 
 fn parse_auction_item(element: &Element) -> Auction {
@@ -94,17 +93,16 @@ fn parse_auction_item(element: &Element) -> Auction {
 
     let absolute_link = format!("{}{}", AUCTION_WEBSITE_URL, relative_link);
 
-    return Auction {
-        location: location,
-        batch: batch,
-        date_of_sale: date_of_sale,
-        minimum_bid_price: minimum_bid_price,
-        minimum_increment: minimum_increment,
-        procedure: procedure,
-        starting_price: starting_price,
-        link: absolute_link,
-        ..Default::default()
-    };
+    Auction {
+        location,
+        batch,
+        date_of_sale,
+        minimum_bid_price,
+        minimum_increment,
+        procedure,
+        starting_price,
+        link: absolute_link
+    }
 }
 
 fn browse_auctions() -> Result<Vec<Auction>, Error> {
