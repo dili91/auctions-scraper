@@ -101,7 +101,7 @@ fn parse_auction_item(element: &Element) -> Auction {
         minimum_increment,
         procedure,
         starting_price,
-        link: absolute_link
+        link: absolute_link,
     }
 }
 
