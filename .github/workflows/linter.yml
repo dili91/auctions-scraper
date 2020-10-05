@@ -1,10 +1,9 @@
-name: Rust linter
+name: Rust workflow
 
 on: push
 
 jobs:
   rust-lint:
-    name: Lint Rust code base
     runs-on: ubuntu-latest
 
     steps:
