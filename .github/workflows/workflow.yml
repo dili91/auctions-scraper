@@ -23,7 +23,7 @@ jobs:
       - name: Cargo format
         uses: actions-rs/cargo@v1
         with:
-          command: format
+          command: fmt
           args: --check
 
       - name: Cargo clippy
