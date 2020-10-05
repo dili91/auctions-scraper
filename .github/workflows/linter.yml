@@ -1,0 +1,27 @@
+name: Rust linter
+
+on: push
+
+jobs:
+  rust-lint:
+    name: Lint Rust code base
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Cargo format check
+        uses: icepuma/rust-action@master 
+        with:
+          args: cargo fmt -- --check
+
+      - name: Cargo clippy
+        uses: icepuma/rust-action@master
+        with:
+          args: cargo clippy -- -Dwarnings
+      
+      - name: Cargo test
+        uses: icepuma/rust-action@master
+        with:
+          args: cargo test
