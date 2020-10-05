@@ -10,7 +10,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Cargo format check
+      - name: Look for vulnerabilities
+        uses: icepuma/rust-action@master 
+        with:
+          args: cargo audit 
+
+      - name: Check code format
         uses: icepuma/rust-action@master 
         with:
           args: cargo fmt -- --check
@@ -18,7 +23,8 @@ jobs:
       - name: Cargo clippy
         uses: icepuma/rust-action@master
         with:
-          args: cargo clippy -- -Dwarnings
+          args: cargo clippy
+          # args: cargo clippy -- -Dwarnings
       
       - name: Cargo test
         uses: icepuma/rust-action@master
