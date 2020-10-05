@@ -7,27 +7,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Look for vulnerabilities
-        uses: actions-rs/audit-check@v1.2.0
+      - name: Rust setup
+        uses: actions-rs/toolchain@v1
         with:
-          # GitHub Actions token
-          token: ${{ secrets.GITHUB_TOKEN }}
+          toolchain: stable
 
-      - name: Check code format
-        uses: icepuma/rust-action@master 
+      - name: Cargo audit
+        uses: actions-rs/cargo@v1
         with:
-          args: cargo fmt -- --check
+          command: audit
+
+      - name: Cargo format
+        uses: actions-rs/cargo@v1
+        with:
+          command: format
+          args: --check
 
       - name: Cargo clippy
-        uses: icepuma/rust-action@master
+        uses: actions-rs/cargo@v1
         with:
-          args: cargo clippy
-          # args: cargo clippy -- -Dwarnings
+          command: clippy
+          # args: -Dwarnings
       
       - name: Cargo test
-        uses: icepuma/rust-action@master
+        uses: actions-rs/cargo@v1
         with:
-          args: cargo test
+          command: test
