@@ -1,5 +1,5 @@
 # Auctions scraper
-A simple web scraping project based on Rust
+:male_detective: :crab: A simple web scraping project based on Rust
 
 ## Todos
 - split project into different modules
