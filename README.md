@@ -4,5 +4,5 @@
 ## Todos
 - [ ] split project into different modules
 - [ ] define tests
-- [ ] make it docker ready
-- [ ] link github actions
+- [x] make it docker ready
+- [x] link github actions

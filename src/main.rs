@@ -1,7 +1,7 @@
 extern crate log;
 
 use failure::Error;
-use headless_chrome::{Browser, Element};
+use headless_chrome::{Browser, Element, LaunchOptionsBuilder};
 use log::*;
 use serde::{Deserialize, Serialize};
 
@@ -106,14 +106,14 @@ fn parse_auction_item(element: &Element) -> Auction {
 }
 
 fn browse_auctions() -> Result<Vec<Auction>, Error> {
-    // let launch_opts = LaunchOptionsBuilder::default()
-    //     .headless(false)
-    //     .build()
-    //     .unwrap();
+    let launch_opts = LaunchOptionsBuilder::default()
+        .sandbox(false)
+        .build()
+        .unwrap();
 
-    // let browser = Browser::new(launch_opts)?;
+    let browser = Browser::new(launch_opts)?;
 
-    let browser = Browser::default()?;
+    //let browser = Browser::default()?;
 
     let tab = browser.wait_for_initial_tab()?;
 
